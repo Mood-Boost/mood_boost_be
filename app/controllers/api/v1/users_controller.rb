@@ -14,10 +14,6 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
-  # def patch
-  #  STRETCH GOAL
-  # end
-
   private
 
   def user_params

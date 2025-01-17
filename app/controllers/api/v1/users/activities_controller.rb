@@ -32,4 +32,10 @@ class Api::V1::Users::ActivitiesController < ApplicationController
       ), status: :unprocessable_entity
     end
   end
+
+  private
+
+  def user_activity_params
+   params.require(:user_activity).permit(:user_id, :activity_id)
+  end
 end

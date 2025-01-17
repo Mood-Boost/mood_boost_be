@@ -2,6 +2,9 @@ class UserActivity < ApplicationRecord
   belongs_to :user
   belongs_to :activity
 
+  validates :user, presence: true
+  validates :activity, presence: true
+
   def self.get_user_activities(user_id)
     user = User.find_by(id: user_id)
     return [] if user.nil?
@@ -15,6 +18,7 @@ class UserActivity < ApplicationRecord
   end
 
   def self.create_with_user_and_activity(user_id, activity_id)
+    return nil unless user_id && activity_id
     create(user_id: user_id, activity_id: activity_id)
   end
 
@@ -26,6 +30,7 @@ class UserActivity < ApplicationRecord
               .where(user_id: user_id)
               .group('activities.name')
               .order('activity_count DESC')
+              
     build_summary_hash(summary)
   end
 
