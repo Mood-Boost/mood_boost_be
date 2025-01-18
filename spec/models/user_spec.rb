@@ -47,4 +47,19 @@ RSpec.describe User, type: :model do
       expect(user.save).to be_falsey
     end
   end
+
+  describe "Validations:" do
+    it "rejects invalid email format" do
+      user = User.new(username: "testuser", email: "invalidemail", password: "password123")
+      expect(user).not_to be_valid
+      expect(user.errors[:email]).to include("is invalid")
+    end
+  
+    it "rejects duplicate email" do
+      create(:user, email: "duplicate@example.com")
+      user = User.new(username: "newuser", email: "duplicate@example.com", password: "password123")
+      expect(user).not_to be_valid
+      expect(user.errors[:email]).to include("has already been taken")
+    end
+  end
 end

@@ -141,4 +141,13 @@ RSpec.describe UserActivity, type: :model do
 
     expect(result).to eq({})
   end
+  
+  describe ".activity_summary_by_user" do
+    it "handles edge case where user ID is not an integer" do
+      summary = UserActivity.activity_summary_by_user("invalid_id")
+  
+      expect(summary).to eq({})
+    end
+  end
+  
 end  

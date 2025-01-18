@@ -119,4 +119,30 @@ RSpec.describe "Activities Endpoints:", type: :request do
       end
     end
   end
+
+  describe "GET /api/v1/users/:user_id/activities" do
+    context "when user ID is invalid" do
+      it "returns a not found error" do
+        get "/api/v1/users/999/activities"
+  
+        expect(response).to have_http_status(:not_found)
+  
+        parsed_response = JSON.parse(response.body, symbolize_names: true)
+        expect(parsed_response[:errors].first[:detail]).to eq("User not found")
+      end
+    end
+  end
+  
+  describe "POST /api/v1/users/:user_id/activities" do
+    context "when user ID is invalid" do
+      it "returns an unprocessable entity error" do
+        post "/api/v1/users/999/activities", params: { activity_id: 1 }
+  
+        expect(response).to have_http_status(:unprocessable_entity)
+  
+        parsed_response = JSON.parse(response.body, symbolize_names: true)
+        expect(parsed_response[:errors].first[:detail]).to eq("Unable to create activity. Please ensure the user and activity are valid.")
+      end
+    end
+  end
 end
