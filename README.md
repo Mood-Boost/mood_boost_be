@@ -48,6 +48,70 @@ These are included as gems and installed when bundle install is run from the com
 From the command prompt run:
 - rails db:{drop,create,migrate,seed} or rails db:reset
 
+## Sample Requests/Responses
+
+### GET /api/v1/users
+```json
+{
+  "data": [
+    {
+      "id": "19",
+      "type": "user",
+      "attributes": {
+        "username": "default",
+        "first_name": "Default",
+        "email": "default@gmail.com"
+      }
+    },
+    {
+      "id": "20",
+      "type": "user",
+      "attributes": {
+        "username": "apu_nahasapeemapetilon",
+        "first_name": "Apu",
+        "email": "apu.nahasapeemapetilon@example.com"
+      }
+    }
+  ]
+}
+```
+### GET api/v1/users/20/activities?summary=true
+```json
+{
+    "activity_summary": {
+        "View a Quote": 11,
+        "View Breathing Guide": 2,
+        "View a Joke": 1
+    }
+}
+```
+### POST api/v1/users/19/activities
+```json
+{
+    "user_activity": {
+        "id": 159,
+        "user_id": 19,
+        "activity_id": 4,
+        "created_at": "2025-01-18T00:05:36.364Z",
+        "updated_at": "2025-01-18T00:05:36.364Z"
+    }
+}
+```
+### POST /api/v1/users
+```json
+{
+    "data": {
+        "id": "31",
+        "type": "user",
+        "attributes": {
+            "username": "stormblessed",
+            "first_name": null,
+            "email": "default224@gmail.com"
+        }
+    }
+}
+```
+
 ## Test Suite
 - RSpec
 - Factory Bot
