@@ -1,6 +1,7 @@
 # MOOD BOOST (Back End)
 
-![Front End Image](images/Moodboost_fe.png)
+## Preview
+![Front End Image](https://github.com/Mood-Boost/mood_boost_be/blob/main/images/New%20Recording%20-%201_17_2025%2C%204_08_07%20PM-high.gif)
 
 Mood Boost offers simple breathing exercises, inspiring quotes, and a touch of humor to brighten your day and put a smile on your face.  
 
@@ -23,7 +24,7 @@ Clone down the resposity to your location machine, cd into the direcotry and run
 - bundle install
 - rails db:{drop,create,migrate,seed} or rails db:reset
 
-At this point you can run the backend and run the test suite or test backend functionalality by launching the server from the command prompt:
+At this point you can run the backend and run the test suite or test backend functionality by launching the server from the command line:
 - rails s or rails server
 
 To see the app fully functioning you will also need to clone down the front end and run that as well.
@@ -32,18 +33,15 @@ To see the app fully functioning you will also need to clone down the front end 
 
 - Ruby v3.2
 - Rails v7.1
-- Faraday
-- JSONAPI-Serializer
+- PostgreSQL
+- JSONAPI-Serializer*
+- rack-cors*
 
-## System Dependencies
-- Faraday
-- JSONAPI-Serializer
-
-These are included as gems and installed when bundle install is run from the command prompt.
+*These are included as gems and installed when bundle install is run from the command prompt.
 
 ## Database Creation/Initialization
 
-![Database Schema](images/Moodboost_be_db.png)
+![Database Schema](https://github.com/Mood-Boost/mood_boost_be/blob/main/images/schema.png)
 
 From the command prompt run:
 - rails db:{drop,create,migrate,seed} or rails db:reset
@@ -121,8 +119,6 @@ From the command prompt run:
 
 To run the RSpec tests from the command prompt run: 
 - bundle exec rspec spec
-
-* Deployment instructions
 
 ## Contributors
 - Danielle Cardona [github](https://github.com/dcardona23) [LinkedIn](https://www.linkedin.com/in/danielle-cardona-se/)
